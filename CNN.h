@@ -267,6 +267,10 @@ vector<vector<float> > CNN::add_bias(vector<vector<float> >& feature_map, vector
 
 vector<vector<vector<float> > > CNN::conv2d(vector<vector<vector<float> > >& feature_map, const vector<vector<vector<vector<float> > > >& conv_filter, int filter_size, int filter_num)
 {
+		
+//输入为三维(img_size, img_size, input_channels), 卷积核四维(filter_size,filter_size,input_channels,output_channels)
+//对于每一个output_channels，其值为input_channels个filter和img卷积结果的和，filter在img上的卷积从img的左上角开始，以img上的每个像素点为中心进行卷积/	
+//卷积的padding和max_pool一样	
 	int feature_num = feature_map.size();
 	int new_feature_num = conv_filter.size();
 	int feature_height = feature_map[0].size();
